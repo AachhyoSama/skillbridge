@@ -1,0 +1,27 @@
+# Node modules (React front-end)
+node_modules/
+
+# Build output (React front-end)
+build/
+dist/
+
+# Virtual Environment (Python back-end)
+venv/
+env/
+
+# Python bytecode files
+*.pyc
+*.pyo
+
+# IDEs and Editors
+.vscode/
+.idea/
+
+# Environment variables
+.env
+
+# macOS
+.DS_Store
+
+# Other files/folders to exclude
+*.log
