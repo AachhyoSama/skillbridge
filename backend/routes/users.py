@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException, Depends, status
+from fastapi import APIRouter, HTTPException, Depends
 from models.user import User
 from schemas import UserPublic, UpdateUser
 from database import users_collection
@@ -17,7 +17,7 @@ def get_profile(current_user: dict = Depends(get_current_user)):
 # update profile
 @router.put("/me")
 def update_profile(updated: UpdateUser, current_user: dict = Depends(get_current_user)):
-    update_data = {k: v for k, v in updated.dict().items() if v is not None}
+    update_data = {k: v for k, v in updated.model_dump().items() if v is not None}
     if update_data:
         users_collection.update_one({"_id": current_user["_id"]}, {"$set": update_data})
     return {"message": "Profile updated successfully!"}
